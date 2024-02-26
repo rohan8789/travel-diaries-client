@@ -1,0 +1,52 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    /* border: 1px solid red; */
+}
+
+.overlay-content {
+    background: white;
+    border-radius: 8px;
+    text-align: center;
+    width:88vw;
+    height:98vh;
+    /* border:2px solid blue; */
+}
+.delete-overlay{
+    width:46vw;
+    height: 20em;
+}
+
+.delete-overlay .form{
+    height: 270px;
+}
+
+.overlay-content header{
+    border-radius: 8px 8px 0px 0px;
+}
+
+.overlay-content form{
+    /* border: 2px solid gold; */
+    width: 100%;
+    height: 87%;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content{
+    height:100%;
+}
+
+
+.modal-footer{
+    margin-top: auto;
+    /* border: 1px solid black; */
+}

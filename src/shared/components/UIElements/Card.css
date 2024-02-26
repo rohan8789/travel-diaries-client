@@ -1,0 +1,29 @@
+.card-item{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #131111;
+    width: 28vw;
+    height: 260px;
+    color: white;
+    border-radius: 20px;
+    box-shadow: 6px 6px 30px black;
+}
+
+@media only screen and (min-width: 1612px) {
+    .card-item {
+        width: 23vw;
+    }
+}
+
+@media only screen and (max-width: 1338px) {
+    .card-item {
+        width: 42vw;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .card-item{
+        width: 68vw;
+    }   
+}

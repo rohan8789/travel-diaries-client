@@ -1,0 +1,23 @@
+.h2{
+    text-align: center;
+    color:hotpink
+}
+
+.container{
+    position: relative;
+    top:20%;
+    left:35%;
+}
+
+
+@media only screen and (min-width: 1612px) {
+    .container {
+        width: 24vw;
+    }
+}
+
+@media only screen and (max-width: 1338px) {
+    .container {
+        width: 26vw;
+    }
+}

@@ -1,0 +1,90 @@
+/* Navbar.css */
+
+.h1 {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 50px;
+    font-weight: 500;
+    margin-left: 18px;
+}
+
+.nav {
+    margin-right: 25px;
+    margin-left: auto;
+}
+
+.nav .ul {
+    display: flex;
+    align-items: center;
+}
+
+.nav .ul .li {
+    list-style: none;
+    margin: 0px 15px;
+}
+
+.nav .ul .li a {
+    position: relative;
+    text-decoration: none;
+    background-color: red;
+    padding: 13px;
+    border-radius: 5px;
+    color: white;
+}
+.nav .ul .li .logout-btn {
+    position: relative;
+    top:2%;
+    text-decoration: none;
+    background-color: red;
+    padding: 12px;
+    border-radius: 5px;
+    color: white;
+}
+
+.nav .ul .li a.active {
+    background-color: white;
+    color: black;
+}
+
+.hamburger-btn {
+    display: none;
+}
+
+#myLinks{
+    display: none;
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 815px) {
+    .nav .ul {
+        display: none;
+    }
+    
+    .hamburger-btn {
+        background-color: gold;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+        margin-left: 5px;
+    }
+    
+    #myLinks {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        background-color: #333;
+        width: 35%;
+        height: 186px;
+    }
+    
+    #myLinks a {
+        text-decoration: none;
+        background-color: white;
+        padding: 14px;
+        border-radius: 5px;
+        color: black;
+        margin: 5px 0;
+    }
+    
+}

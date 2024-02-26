@@ -1,0 +1,58 @@
+.place-form{
+    position: relative;
+    left:28%;
+    top:10%;
+    margin:20px;
+    padding: 20px;
+    width:40vw;
+    color: white;
+    background-color: #131111;
+    border-radius: 15px;
+    box-shadow: 6px 6px 30px black;
+    /* border:1px solid red; */
+}
+
+
+.form-control {
+    margin: 8px;
+    padding: 8px;
+}
+
+.form-control p {
+    color: red;
+}
+
+.form-control label,
+.form-control input,
+.form-control textarea {
+    display: block;
+}
+
+.form-control label {
+    font-family: Arial, sans-serif;
+    margin: 3px 0px 3px 0px;
+    padding: 3px 0px 3px 0px;
+}
+
+.form-control input {
+    width: 82%;
+    height: 40px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.form-control textarea {
+    width: 82%;
+}
+
+
+
+
+
+
+
+.when-no-place {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

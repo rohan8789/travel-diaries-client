@@ -1,0 +1,55 @@
+.link-item{
+    text-decoration: none;
+    color: inherit;
+}
+
+.li-item{
+    list-style-type: none;
+    border: 1px solid green;
+    border-radius: 20px;
+    margin:20px 12px 20px 12px;
+    transition: transform 0.3s ease;
+}
+
+.li-item:hover{
+    transform: rotate(-5deg);
+    
+}
+
+.top {
+    top: 0;
+    left: 0;
+    display: flex;
+    border-radius: 20px 20px 0px 0px;
+    background-color: #000000;
+}
+
+.name {
+    font-size: 1.2em;
+    color: white;
+    display: flex;
+    flex: 1;
+    margin: 16% 20px 0;
+    word-wrap: break-word;
+}
+
+.name:hover{
+    color:gold;
+    cursor: pointer;
+}
+
+
+.circle-img{
+    width:32%;
+    height:120%;
+    position:relative;
+    top:32%;
+    right:8%;
+    border-radius: 50%;
+    border: 5px solid white;
+}
+
+.bottom{
+    margin:auto 0px 25px 25px;
+}
+
