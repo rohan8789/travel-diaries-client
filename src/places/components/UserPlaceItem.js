@@ -15,7 +15,6 @@ import './place.css'
 
 const UserPlaceItem = (props) => {
   const auth = useContext(AuthContext);
-  console.log(auth);
   const [showMap, setShowMap] = useState(false);
   const [show, setShow] = useState(false);
   const [isLoading, setIsLoading] = useState();
