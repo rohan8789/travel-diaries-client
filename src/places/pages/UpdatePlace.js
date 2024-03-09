@@ -87,12 +87,10 @@ const UpdatePlace = () => {
       description: x.description,
     });
     if (x.title === "" && x.description === "") {
-      console.log("data is sent to server", placeForm);
       sendRequest();
     } else {
       x.title = "";
       x.description = "";
-      console.log("can not be sent to server");
     }
   };
 
