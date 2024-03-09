@@ -17,7 +17,6 @@ const UserPlace = () => {
   const [isLoading, setIsLoading] = useState();
   const [placeData, setPlaceData] = useState();
   const [name, setName] = useState();
-  console.log(userId);
   
   useEffect(()=>{
     const sendRequest = async () =>{
