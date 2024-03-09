@@ -23,9 +23,9 @@ const Navbar = () => {
       <div id="hamburger-div">
         <div id="myLinks">
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/login">Authenticate</NavLink>
-          <NavLink to={`/${auth.uid}/places`}>My Places</NavLink>
-          <NavLink to="/logout">Logout</NavLink>
+          {auth.isLoggedIn &&<><NavLink to={`/${auth.uid}/places`}>My visits</NavLink></>}
+          {!auth.isLoggedIn && <><NavLink to="/signup">Authenticate</NavLink></>}
+          {auth.isLoggedIn && <NavLink to="/logout" onClick={logMeOut}>Logout</NavLink>}
         </div>
       </div>
       <button className="hamburger-btn" onClick={toggleMenu}>
