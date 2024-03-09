@@ -15,7 +15,6 @@ import "../../places/pages/NewPlace.css";
 
 const Login = () => {
   const auth = useContext(AuthContext);
-  console.log(auth);
   const navigate = useNavigate();
   const [loginForm, setLoginForm] = useState({
     email: "",
@@ -56,7 +55,6 @@ const Login = () => {
       })
       setIsLoading(false);
       const data = response.data;
-      // console.log('we have received the response...', data?.name, data?.userId, data?.email, data?.token);
       auth.login(data?.userId, data?.token);
       toast.success(`Welcome ${data?.name}`);
       navigate("/");
@@ -75,11 +73,9 @@ const Login = () => {
     });
     if(x.email === "" && x.password === ""){
       sendRequest();
-      console.log("data is sent to server", loginForm);
     } else {
       x.email = "";
       x.password = "";
-      console.log("can not be sent to server");
     }
   };
 
