@@ -79,11 +79,9 @@ const Signup = () => {
     if (x.name === "" && x.image=== null && x.email === "" && x.password === "" && x.repassword === "") {
       sendRequest()
       
-      console.log("data is sent to server", registerForm);
       registerForm.image=null;
     } else {
       x.name = ""; x.image=null; x.email = ""; x.password = ""; x.repassword = "";
-      console.log("can not be sent to server");
     }
   };
 
