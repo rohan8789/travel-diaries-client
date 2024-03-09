@@ -10,7 +10,6 @@ const Button = (props) => {
     );
   }
   if(props.to){
-    console.log(props.to);
     return (
       <Link to={props.to} id={props.id} className={props.className}>{props.children}</Link>
     )
