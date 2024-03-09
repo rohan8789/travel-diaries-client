@@ -15,7 +15,7 @@ const UsersItem = (props) => {
           <Card>
             <div className="top">
               <h2 className="name">{props?.name}</h2>
-              <Avatar image={`http://localhost:5000/${correctedImagePath}`} alt={props?.name}/>
+              <Avatar image={`${process.env.REACT_APP_ASSET_URL}/${correctedImagePath}`} alt={props?.name}/>
             </div>
             <div className="bottom">
               <p className="places">
