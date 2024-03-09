@@ -1,9 +1,15 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 import { validate } from "../../shared/utils/validators";
 import Button from "../../shared/components/FormElements/Button";
 import { AuthContext } from "../../shared/context/auth-context";
+import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
+
 
 import "../../places/pages/NewPlace.css";
 
@@ -19,11 +25,10 @@ const Login = () => {
     email: "",
     password: "",
   });
-
+  const [isLoading, setIsLoading] = useState();
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
-    console.log(name, value);
     setLoginForm((prev) => {
       return {
         ...prev,
@@ -39,11 +44,27 @@ const Login = () => {
   const switchHandle = (e) => {
       e.preventDefault();
       navigate("/signup");
-      console.log('hi', auth.isLoggedIn);
       auth.changeToggle();
-      console.log('heloooo', auth.isLoggedIn);
   }
   
+  const sendRequest = async () =>{
+    setIsLoading(true);
+    try{
+      const response = await axios.post(process.env.REACT_APP_BACKEND_URL+'/users/login', {
+        email:loginForm.email,
+        password:loginForm.password,
+      })
+      setIsLoading(false);
+      const data = response.data;
+      // console.log('we have received the response...', data?.name, data?.userId, data?.email, data?.token);
+      auth.login(data?.userId, data?.token);
+      toast.success(`Welcome ${data?.name}`);
+      navigate("/");
+    }catch(error){
+      setIsLoading(false);
+      toast.error(error.response.data.message);
+    }
+  }
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -53,9 +74,8 @@ const Login = () => {
       password: x.password,
     });
     if(x.email === "" && x.password === ""){
+      sendRequest();
       console.log("data is sent to server", loginForm);
-      auth.login();
-      navigate("/");
     } else {
       x.email = "";
       x.password = "";
@@ -64,26 +84,32 @@ const Login = () => {
   };
 
   return (
+    <>
+    {isLoading && <LoadingSpinner/>}
+    {!isLoading && 
     <form className="place-form" onSubmit={submitHandler}>
+      <h1>Login Form</h1>
       <div className="form-control">
-        <label htmlFor="email">Enter your Email: </label>
+        <label htmlFor="email">Email </label>
         <input
           type="email"
           name="email"
           onChange={handleChange}
           value={loginForm.email}
-        />
+          placeholder="Enter your email "
+          />
         {formError.email ? <p>{formError.email}</p> : ""}
       </div>
 
       <div className="form-control">
-        <label htmlFor="password">Enter your password: </label>
+        <label htmlFor="password">Password </label>
         <input
           type="password"
           name="password"
           onChange={handleChange}
           value={loginForm.password}
-        />
+          placeholder="Enter your password "
+          />
         {formError.password ? <p>{formError.password}</p> : ""}
       </div>
 
@@ -92,12 +118,13 @@ const Login = () => {
       </Button>
       <Button
         className="btn-shared switch-btn"
-        id="btn-1"
         onClick={switchHandle}
-      >
-        Switch To Login
+        >
+        Register
       </Button>
     </form>
+    }
+    </>
   );
 };
 

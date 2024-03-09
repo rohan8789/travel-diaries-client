@@ -7,7 +7,6 @@ import "./Navbar.css";
 const Navbar = () => {
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
-  console.log("hellloooo", auth.isLoggedIn);
   const toggleMenu = () => {
     let x = document.getElementById("hamburger-div");
     if (x.style.display === "block") x.style.display = "none";
@@ -25,7 +24,7 @@ const Navbar = () => {
         <div id="myLinks">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/login">Authenticate</NavLink>
-          <NavLink to="/u2/places">My Places</NavLink>
+          <NavLink to={`/${auth.uid}/places`}>My Places</NavLink>
           <NavLink to="/logout">Logout</NavLink>
         </div>
       </div>
@@ -40,7 +39,7 @@ const Navbar = () => {
           </li>
           {auth.isLoggedIn && 
           <li className="li">
-            <NavLink to="/u2/places">My visits</NavLink>
+            <NavLink to={`/${auth.uid}/places`}>My visits</NavLink>
           </li>
           }
           {auth.isLoggedIn && 

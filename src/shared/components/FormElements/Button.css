@@ -1,3 +1,7 @@
+button{
+    transition: 0.4s all;
+}
+
 .btn-shared{
     width: 110px;
     height: 50px;
@@ -10,7 +14,7 @@
 
 /* view-map button */
 #btn-1 {
-    background-color: green;
+    background-color: #4caf50;
     color:white
 }
 
@@ -29,6 +33,7 @@
 #btn-3{
     background-color: red;
     color: white;
+    position: relative;
 }
 
 .btn-shared:hover,
@@ -51,15 +56,20 @@
 
 
 .submit-btn{
-    background-color: rgb(111, 111, 198);
+    background-color: #4caf50;
     color: white;
     position: relative;
-    left:2.6%;
+    left:5.6%;
     margin-right: 20px;
+    margin-top: 8px;
 }
 
 .switch-btn{
-    width:150px;
+    width:110px;
+    background-color: red;
+    color: white;
+    position: relative;
+    left:3%;
 }
 
 

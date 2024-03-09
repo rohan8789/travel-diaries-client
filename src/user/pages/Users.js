@@ -1,79 +1,61 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from "axios";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import UsersList from '../components/UsersList'
 import Card from '../../shared/components/UIElements/Card';
+import LoadingSpinner from '../../shared/components/UIElements/LoadingSpinner';
 
 import './Users.css'
 
 
 const Users = () => {
-  let allUsers = [
-    {
-      id: "u1",
-      name: "Rohan Singh",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYscfUBUbqwGd_DHVhG-ZjCOD7MUpxp4uhNe7toUg4ug&s",
-      placeCount: 1,
-      location: 1,
-    },
-    {
-      id: "u2",
-      name: "Rohan Singh",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYscfUBUbqwGd_DHVhG-ZjCOD7MUpxp4uhNe7toUg4ug&s",
-      placeCount: 3,
-      location: 3,
-    },
-    {
-      id: "u1",
-      name: "Rohan Singh",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYscfUBUbqwGd_DHVhG-ZjCOD7MUpxp4uhNe7toUg4ug&s",
-      placeCount: 3,
-      location: 3,
-    },
-    {
-      id: "u",
-      name: "Rohan Singh",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYscfUBUbqwGd_DHVhG-ZjCOD7MUpxp4uhNe7toUg4ug&s",
-      placeCount: 3,
-      location: 3,
-    },
-    {
-      id: "u1",
-      name: "Rohan Singh",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYscfUBUbqwGd_DHVhG-ZjCOD7MUpxp4uhNe7toUg4ug&s",
-      placeCount: 0,
-      location: 0,
-    },
-    {
-      id: "u1",
-      name: "Rohan Singh",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYscfUBUbqwGd_DHVhG-ZjCOD7MUpxp4uhNe7toUg4ug&s",
-      placeCount: 3,
-      location: 3,
-    },
-    {
-      id: "u2",
-      name: "Rahul Singh",
-      image:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYscfUBUbqwGd_DHVhG-ZjCOD7MUpxp4uhNe7toUg4ug&s",
-      placeCount: 5,
-      location: 8,
-    },
-  ];
-  if(allUsers.length===0){
+  const [usersData, setUsersData] = useState();
+  const [isLoading, setIsLoading] = useState();
+
+  useEffect(()=>{
+    const sendRequest = async() =>{
+      setIsLoading(true);
+      try{
+        const response = await axios.get(process.env.REACT_APP_BACKEND_URL+'/users');
+        setIsLoading(false);
+        setUsersData(response?.data?.users);
+      }catch(err){
+        setIsLoading(false);
+        toast.error(err?.response?.data?.message);
+      }
+    }
+    sendRequest();
+  }, [])
+
+
+  if(usersData===undefined){
     return (
-        <Card className='container'>
-          <h2 className='h2'>Nothing to display</h2>
+      <>
+        {<LoadingSpinner />}
+        <Card className="container">
+          <h2 className="h2">Error while fetching users data</h2>
         </Card>
+      </>
     );
-  }else{
+  }
+  if(usersData.length===0){
     return (
-      <UsersList items={allUsers}/>
+      <>
+        {isLoading && <LoadingSpinner/>}
+        {!isLoading && <Card className='container'>
+            <h2 className='h2'>Nothing to display</h2>
+        </Card>}
+      </>
+    );
+  }
+  if(usersData){
+    return (
+      <>
+        {isLoading && <LoadingSpinner/>}
+       {!isLoading && <UsersList users={usersData}/>}
+      </>
     )
   }
 }

@@ -1,0 +1,26 @@
+.containers{
+    position: absolute;
+    top:20%;
+    left:47%;
+}
+
+.loading-spinner {
+    position: fixed;
+    border: 8px solid gold;
+    border-top: 8px solid rgb(237, 14, 126);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    z-index: 1000;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

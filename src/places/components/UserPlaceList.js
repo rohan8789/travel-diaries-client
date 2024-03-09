@@ -5,7 +5,6 @@ import UserPlaceItem from "./UserPlaceItem";
 
 
 const UserPlaceList = (props) => {
-  console.log(props.items[0].address);
   return (
     <ul className="cards card">
       {props.items.map((item) => {
@@ -13,11 +12,12 @@ const UserPlaceList = (props) => {
           key={item.id}
           placeId={item.id}
           title={item.title}
-          Description={item.Description}
-          image={item.imageURL}
+          description={item.description}
+          image={item.image}
           address={item.address}
-          coordinates={item.coordinates}
-          creatorID={item.creatorId}
+          location={item.location}
+          creatorId={item.creatorId}
+          onDelete={props.onDeletePlace}
         />;
       })}
     </ul>

@@ -5,17 +5,17 @@ import './UsersList.css';
 
 
 const UsersList = (props) => {
+  // console.log(props.users);
   return (
     <ul className="cards">
-      {props.items.map((item) => {
+      {props.users.map((item) => {
         return (
           <UsersItem
-            key={item.id}
-            id={item.id}
-            name={item.name}
-            image={item.image}
-            placeCount={item.placeCount}
-            location={item.location}
+            key={item?.id}
+            id={item?.id}
+            name={item?.name}
+            image={item?.image}
+            places={item?.places.length}
           />
         );
       })}

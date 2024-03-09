@@ -6,7 +6,6 @@
 .extended{
     width:48vw;
     height: fit-content;
-    /* border: 1px solid hotpink; */
 }
 
 .li-items{
@@ -50,10 +49,9 @@
 }
 
 .btn-div{
-    /* border:1px solid white; */
     padding-top: 9px;
     padding-bottom: 15px;
-    height: 16vh;
+    height: 95px;
     border-radius: 0px 0px 20px 20px;
     display: flex;
     justify-content:center;
