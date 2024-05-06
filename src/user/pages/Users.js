@@ -35,7 +35,7 @@ const Users = () => {
       <>
         {<LoadingSpinner />}
         <Card className="container">
-          <h2 className="h2">Error while fetching users data</h2>
+          <h2 className="h2">Fetching users data from server</h2>
         </Card>
       </>
     );
